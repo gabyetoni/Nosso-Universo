@@ -28,40 +28,4 @@
         <p><i>"Você virou todo o meu universo"</i></p>
         <img src="https://i.postimg.cc/zBhvcrT4/ele.jpg" id="foto-centro">
         <br>
-        <a href="https://open.spotify.com/playlist/2IPLpDAPUPVga9KVsvys7R?si=0b9118fcfbdd45b4" class="botao-spotify">Ouvir Nossa Playlist ❤️</a>
-        <br>
-        <img src="https://i.postimg.cc/3rCm8XDv/o-jardim.jpg" id="capa-jardim">
-        
-        <audio id="musica" loop>
-            <source src="musica.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
-    <script>
-        function iniciarSurpresa() {
-            document.getElementById('tela-inicio').style.display = 'none';
-            document.getElementById('conteudo').style.display = 'block';
-            
-            // O comando abaixo força a reprodução após o clique
-            var audio = document.getElementById('musica');
-            audio.play();
-            
-            criarEstrelas();
-        }
-
-        function criarEstrelas() {
-            for (let i = 0; i < 40; i++) {
-                let estrela = document.createElement("div");
-                estrela.className = "estrela";
-                let tam = Math.random() * 4 + 2;
-                estrela.style.width = tam + "px";
-                estrela.style.height = estrela.style.width;
-                estrela.style.left = (Math.random() * 200 - 100) + "%";
-                estrela.style.top = (Math.random() * 200 - 100) + "%";
-                estrela.style.animationDuration = (Math.random() * 15 + 10) + "s";
-                document.body.appendChild(estrela);
-            }
-        }
-    </script>
-</body>
-</html>
+        <a href="https://open.spotify.com/playlist/2IPLDAPUPVga9KVsVys7R?si=0b9118fcfbdd45b4" class="botao-spotify">Ouvir Nossa Playlist ❤️
