@@ -39,15 +39,12 @@
 
     <script>
         function iniciarSurpresa() {
-            // Esconde a tela de início e mostra o conteúdo
             document.getElementById('tela-inicio').style.display = 'none';
             document.getElementById('conteudo').style.display = 'block';
             
-            // Tenta reproduzir o áudio após o clique
+            // O comando abaixo força a reprodução após o clique
             var audio = document.getElementById('musica');
-            audio.play().catch(function(error) {
-                console.error("Erro na reprodução:", error);
-            });
+            audio.play();
             
             criarEstrelas();
         }
