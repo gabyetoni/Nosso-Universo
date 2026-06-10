@@ -1,41 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surpresa para o Toni</title>
     <style>
         body { background-color: #030308; color: #ffffff; text-align: center; font-family: 'Georgia', serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px 100px 20px; overflow-x: hidden; }
-        
         #tela-inicio { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #030308; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        
         #conteudo { display: none; width: 100%; max-width: 450px; }
-        
         #foto-centro { display: block; margin: 20px auto 40px auto; width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid #3366ff; box-shadow: 0 0 30px #3366ff; }
-        
         .bloco { background: rgba(26, 26, 46, 0.5); padding: 40px 20px; border-radius: 20px; border: 1px solid #3366ff; margin-bottom: 30px; }
-        
         .separador { font-size: 24px; color: #3366ff; margin: 40px 0; letter-spacing: 10px; opacity: 0.7; }
-
         .botao { padding: 15px 30px; font-size: 16px; border-radius: 50px; border: 2px solid #3366ff; background: transparent; color: white; cursor: pointer; transition: 0.3s; margin: 15px 0; }
         .botao:hover { background: #3366ff; }
-        
+        .botao-spotify { display: block; margin: 30px auto; padding: 15px; background: #1DB954; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; width: 80%; }
         #contador { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
         .caixa-tempo { background: #1a1a2e; padding: 10px 5px; border-radius: 12px; min-width: 45px; border: 1px solid #3366ff; }
         .numero { font-size: 16px; font-weight: bold; color: #3366ff; display: block; }
         .label { font-size: 8px; text-transform: uppercase; }
-
         #capa-jardim { width: 100%; max-width: 300px; border-radius: 15px; margin-bottom: 20px; }
-        
         #visor-roleta { height: 50px; line-height: 50px; font-size: 16px; color: #3366ff; border: 1px dashed #3366ff; margin: 20px 0; border-radius: 10px; background: rgba(0,0,0,0.3); }
-
         .secao-mensagem { margin-top: 60px; padding: 0 20px; }
         .linha-divisoria { border: none; border-top: 1px solid rgba(51, 102, 255, 0.3); width: 60%; margin: 0 auto 30px auto; }
         .mensagem-final { font-style: italic; line-height: 1.8; color: #e0e0e0; font-size: 1.05em; }
-
         .estrela { position: fixed; border-radius: 50%; background: white; pointer-events: none; animation: viajar linear infinite; z-index: 0; }
         @keyframes viajar { 0% { transform: translate(0, 0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translate(100vw, 100vh); opacity: 0; } }
-        
         .aparecer { animation: fadeIn 1.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -53,7 +42,7 @@
         
         <img src="https://i.postimg.cc/zBhvcrT4/ele.jpg" id="foto-centro">
         
-        <iframe data-testid="embed-iframe" style="border-radius:12px; margin-bottom: 40px;" src="https://open.spotify.com/embed/playlist/2IPLpDAPUPVga9KVsvys7R?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <a href="https://open.spotify.com/" class="botao-spotify" target="_blank">Ouvir Nossa Playlist 🎵</a>
         
         <div class="bloco">
             <img src="https://i.postimg.cc/3rCm8XDv/o-jardim.jpg" id="capa-jardim">
@@ -92,17 +81,11 @@
                 Eu amo você meu amor, quero que saiba o quão especial você é para mim. Desde que te conheci, fui mais feliz, você mudou completamente meu mundo, e agora quero que saiba como enxergo você no meu universo...
             </p>
             
-            <img src="https://i.postimg.cc/hvVRWmW5/images.jpg" 
-                 alt="Imagem final" 
-                 style="width: 100%; max-width: 300px; border-radius: 20px; margin-top: 20px; border: 2px solid #3366ff; box-shadow: 0 0 20px rgba(51, 102, 255, 0.4);">
+            <img src="https://i.postimg.cc/hvVRWmW5/images.jpg" style="width: 100%; max-width: 300px; border-radius: 20px; margin-top: 20px; border: 2px solid #3366ff; box-shadow: 0 0 20px rgba(51, 102, 255, 0.4);">
 
             <div style="margin-top: 40px;">
-                <p style="font-size: 0.9em; color: #3366ff; font-style: italic;">
-                    "Em um universo de infinitas possibilidades, a melhor delas foi encontrar você."
-                </p>
-                <button class="botao" onclick="alert('Eu te amo infinitamente mais, meu amor! ❤️')">
-                    Clique aqui para um beijo virtual 💋
-                </button>
+                <p style="font-size: 0.9em; color: #3366ff; font-style: italic;">"Em um universo de infinitas possibilidades, a melhor delas foi encontrar você."</p>
+                <button class="botao" onclick="alert('Eu te amo infinitamente mais, meu amor! ❤️')">Clique aqui para um beijo virtual 💋</button>
             </div>
         </div>
         
@@ -113,7 +96,6 @@
 
     <script>
         window.onload = function() { criarEstrelas(); };
-
         setInterval(function() {
             const inicio = new Date("2026-05-01T00:00:00");
             const agora = new Date();
@@ -129,13 +111,8 @@
         function verificarPalavra() {
             const chute = document.getElementById("input-palavra").value.trim().toUpperCase();
             const feedback = document.getElementById("feedback");
-            if (chute === "SORRISO") {
-                feedback.innerText = "É assim que amo ver você, sorrindo ❤️";
-                feedback.style.color = "#1DB954";
-            } else {
-                feedback.innerText = "Não é isso... tente de novo!";
-                feedback.style.color = "#ff4d4d";
-            }
+            if (chute === "SORRISO") { feedback.innerText = "É assim que amo ver você, sorrindo ❤️"; feedback.style.color = "#1DB954"; }
+            else { feedback.innerText = "Não é isso... tente de novo!"; feedback.style.color = "#ff4d4d"; }
         }
 
         function girarRoleta() {
@@ -146,15 +123,11 @@
         }
 
         function iniciarSurpresa() {
-            const telaInicio = document.getElementById('tela-inicio');
+            document.getElementById('tela-inicio').style.display = 'none';
             const conteudo = document.getElementById('conteudo');
-            const audio = document.getElementById('musica');
-            
-            telaInicio.style.display = 'none';
             conteudo.style.display = 'block';
             conteudo.classList.add('aparecer');
-            
-            audio.play().catch(e => console.log("Aguardando interação do usuário."));
+            document.getElementById('musica').play().catch(e => console.log("Aguardando interação"));
         }
 
         function criarEstrelas() {
