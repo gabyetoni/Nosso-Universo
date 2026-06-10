@@ -25,7 +25,6 @@
         .numero { font-size: 16px; font-weight: bold; color: #3366ff; display: block; }
         .label { font-size: 8px; text-transform: uppercase; }
 
-        .botao-spotify { color: #1DB954; border: 2px solid #1DB954; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; margin-bottom: 40px; display: inline-block; }
         #capa-jardim { width: 100%; max-width: 300px; border-radius: 15px; margin-bottom: 20px; }
         
         #visor-roleta { height: 50px; line-height: 50px; font-size: 16px; color: #3366ff; border: 1px dashed #3366ff; margin: 20px 0; border-radius: 10px; background: rgba(0,0,0,0.3); }
@@ -54,7 +53,7 @@
         
         <img src="https://i.postimg.cc/zBhvcrT4/ele.jpg" id="foto-centro">
         
-        <a href="COLE_O_LINK_DA_SUA_PLAYLIST_AQUI" class="botao-spotify" target="_blank">Ouvir Nossa Playlist ❤️</a>
+        <iframe data-testid="embed-iframe" style="border-radius:12px; margin-bottom: 40px;" src="https://open.spotify.com/embed/playlist/2IPLpDAPUPVga9KVsvys7R?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         
         <div class="bloco">
             <img src="https://i.postimg.cc/3rCm8XDv/o-jardim.jpg" id="capa-jardim">
@@ -155,7 +154,7 @@
             conteudo.style.display = 'block';
             conteudo.classList.add('aparecer');
             
-            audio.play().catch(e => console.log("Aguardando interação do usuário para tocar a música."));
+            audio.play().catch(e => console.log("Aguardando interação do usuário."));
         }
 
         function criarEstrelas() {
