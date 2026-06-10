@@ -63,7 +63,7 @@
             <h3>Pergunta Especial:</h3>
             <p>O que eu mais gosto em você?</p>
             <input type="text" id="input-palavra" placeholder="Sua resposta..." style="padding: 10px; border-radius: 10px; border: none; width: 80%; margin-bottom: 15px;">
-            <br><button class="botao" onclick="verificarPalavra()">Verificar</button>
+            <br><button class="botao" id="btn-verificar" onclick="verificarPalavra()">Verificar</button>
             <p id="feedback"></p>
         </div>
 
@@ -95,7 +95,13 @@
     </div>
 
     <script>
+        // Variáveis de controle do jogo
+        let tentativas = 0;
+        const maxTentativas = 3;
+        const palavraSecreta = "SORRISO";
+
         window.onload = function() { criarEstrelas(); };
+        
         setInterval(function() {
             const inicio = new Date("2026-05-01T00:00:00");
             const agora = new Date();
@@ -109,10 +115,27 @@
         }, 1000);
 
         function verificarPalavra() {
-            const chute = document.getElementById("input-palavra").value.trim().toUpperCase();
+            const input = document.getElementById("input-palavra");
             const feedback = document.getElementById("feedback");
-            if (chute === "SORRISO") { feedback.innerText = "É assim que amo ver você, sorrindo ❤️"; feedback.style.color = "#1DB954"; }
-            else { feedback.innerText = "Não é isso... tente de novo!"; feedback.style.color = "#ff4d4d"; }
+            const chute = input.value.trim().toUpperCase();
+
+            if (chute === palavraSecreta) {
+                feedback.innerText = "É assim que amo ver você, sorrindo ❤️";
+                feedback.style.color = "#1DB954";
+                input.disabled = true;
+                document.getElementById("btn-verificar").disabled = true;
+            } else {
+                tentativas++;
+                if (tentativas < maxTentativas) {
+                    feedback.innerText = "Não é isso... Tente novamente! (" + (maxTentativas - tentativas) + " chances restantes)";
+                    feedback.style.color = "#ff4d4d";
+                } else {
+                    feedback.innerText = "Acabaram as tentativas! A palavra era: " + palavraSecreta;
+                    feedback.style.color = "#3366ff";
+                    input.disabled = true;
+                    document.getElementById("btn-verificar").disabled = true;
+                }
+            }
         }
 
         function girarRoleta() {
