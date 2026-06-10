@@ -108,7 +108,7 @@
         </div>
         
         <audio id="musica" preload="auto">
-            <source src="musica.mp3" type="audio/mpeg">
+            <source src="https://files.catbox.moe/mp4qv1.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -155,9 +155,7 @@
             conteudo.style.display = 'block';
             conteudo.classList.add('aparecer');
             
-            audio.play().catch(e => {
-                console.log("Reprodução automática bloqueada. O usuário precisa interagir.");
-            });
+            audio.play().catch(e => console.log("Aguardando interação do usuário para tocar a música."));
         }
 
         function criarEstrelas() {
