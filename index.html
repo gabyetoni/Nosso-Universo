@@ -3,40 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surpresa</title>
+    <title>Surpresa para o Toni</title>
     <style>
-        body { background-color: #030308; color: #ffffff; text-align: center; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        #tela-inicio { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #030308; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
-        #conteudo { display: none; }
-        button { padding: 15px 30px; font-size: 20px; cursor: pointer; border-radius: 20px; border: 2px solid #3366ff; background: transparent; color: white; }
+        body { background-color: #030308; color: #ffffff; text-align: center; font-family: 'Georgia', serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px 100px 20px; overflow-x: hidden; }
+        
+        #tela-inicio { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #030308; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        
+        #conteudo { display: none; width: 100%; max-width: 450px; }
+        
+        #foto-centro { display: block; margin: 20px auto 40px auto; width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid #3366ff; box-shadow: 0 0 30px #3366ff; }
+        
+        .bloco { background: rgba(26, 26, 46, 0.5); padding: 40px 20px; border-radius: 20px; border: 1px solid #3366ff; margin-bottom: 30px; }
+        
+        .separador { font-size: 24px; color: #3366ff; margin: 40px 0; letter-spacing: 10px; opacity: 0.7; }
+
+        .botao { padding: 15px 30px; font-size: 16px; border-radius: 50px; border: 2px solid #3366ff; background: transparent; color: white; cursor: pointer; transition: 0.3s; margin: 15px 0; }
+        .botao:hover { background: #3366ff; }
+        
+        #contador { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+        .caixa-tempo { background: #1a1a2e; padding: 10px 5px; border-radius: 12px; min-width: 45px; border: 1px solid #3366ff; }
+        .numero { font-size: 16px; font-weight: bold; color: #3366ff; display: block; }
+        .label { font-size: 8px; text-transform: uppercase; }
+
+        .botao-spotify { color: #1DB954; border: 2px solid #1DB954; text-decoration: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; margin-bottom: 40px; display: inline-block; }
+        #capa-jardim { width: 100%; max-width: 300px; border-radius: 15px; margin-bottom: 20px; }
+        
+        #visor-roleta { height: 50px; line-height: 50px; font-size: 16px; color: #3366ff; border: 1px dashed #3366ff; margin: 20px 0; border-radius: 10px; background: rgba(0,0,0,0.3); }
+
+        .secao-mensagem { margin-top: 60px; padding: 0 20px; }
+        .linha-divisoria { border: none; border-top: 1px solid rgba(51, 102, 255, 0.3); width: 60%; margin: 0 auto 30px auto; }
+        .mensagem-final { font-style: italic; line-height: 1.8; color: #e0e0e0; font-size: 1.05em; }
+
+        .estrela { position: fixed; border-radius: 50%; background: white; pointer-events: none; animation: viajar linear infinite; z-index: 0; }
+        @keyframes viajar { 0% { transform: translate(0, 0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translate(100vw, 100vh); opacity: 0; } }
+        
+        .aparecer { animation: fadeIn 1.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div id="tela-inicio">
         <h1>Para o meu amor</h1>
-        <button onclick="iniciarSurpresa()">Abrir Surpresa ✨</button>
+        <button class="botao" onclick="iniciarSurpresa()">Abrir Surpresa ✨</button>
     </div>
 
     <div id="conteudo">
         <h1>Gaby e Toni</h1>
-        <audio id="musica" src="musica.mp3" loop></audio>
+        <p><i>"Você virou todo o meu universo"</i></p>
+        
+        <img src="https://i.postimg.cc/zBhvcrT4/ele.jpg" id="foto-centro">
+        
+        <a href="#" class="botao-spotify">Ouvir Nossa Playlist ❤️</a>
+        
+        <div class="bloco">
+            <img src="https://i.postimg.cc/3rCm8XDv/o-jardim.jpg" id="capa-jardim">
+            <p style="margin-bottom: 10px;">Juntos desde 01/05/2026</p>
+            <div id="contador">
+                <div class="caixa-tempo"><span id="anos" class="numero">0</span><span class="label">Anos</span></div>
+                <div class="caixa-tempo"><span id="meses" class="numero">0</span><span class="label">Meses</span></div>
+                <div class="caixa-tempo"><span id="dias" class="numero">0</span><span class="label">Dias</span></div>
+                <div class="caixa-tempo"><span id="horas" class="numero">0</span><span class="label">Hrs</span></div>
+                <div class="caixa-tempo"><span id="minutos" class="numero">0</span><span class="label">Min</span></div>
+                <div class="caixa-tempo"><span id="segundos" class="numero">0</span><span class="label">Seg</span></div>
+            </div>
+        </div>
+
+        <div class="separador">✦ ✧ ✦</div>
+
+        <div class="bloco">
+            <h3>Pergunta Especial:</h3>
+            <p>O que eu mais gosto em você?</p>
+            <input type="text" id="input-palavra" placeholder="Sua resposta..." style="padding: 10px; border-radius: 10px; border: none; width: 80%; margin-bottom: 15px;">
+            <br><button class="botao" onclick="verificarPalavra()">Verificar</button>
+            <p id="feedback"></p>
+        </div>
+
+        <div class="separador">✦ ✧ ✦</div>
+
+        <div class="bloco">
+            <h3>Roleta do Amor ❤️</h3>
+            <div id="visor-roleta">Gire para ganhar um carinho!</div>
+            <button class="botao" onclick="girarRoleta()">Girar Agora</button>
+        </div>
+
+        <div class="secao-mensagem">
+            <hr class="linha-divisoria">
+            <p class="mensagem-final">
+                Eu amo você meu amor, quero que saiba o quão especial você é para mim. Desde que te conheci, fui mais feliz, você mudou completamente meu mundo, e agora quero que saiba como enxergo você no meu universo...
+            </p>
+            
+            <img src="https://i.postimg.cc/hvVRWmW5/images.jpg" 
+                 alt="Imagem final" 
+                 style="width: 100%; max-width: 300px; border-radius: 20px; margin-top: 20px; border: 2px solid #3366ff; box-shadow: 0 0 20px rgba(51, 102, 255, 0.4);">
+
+            <div style="margin-top: 40px;">
+                <p style="font-size: 0.9em; color: #3366ff; font-style: italic;">
+                    "Em um universo de infinitas possibilidades, a melhor delas foi encontrar você."
+                </p>
+                <button class="botao" onclick="alert('Eu te amo infinitamente mais, meu amor! ❤️')">
+                    Clique aqui 💋
+                </button>
+            </div>
+        </div>
+        
+        <audio id="musica" loop><source src="musica.mp3" type="audio/mpeg"></audio>
     </div>
 
     <script>
+        window.onload = function() { criarEstrelas(); };
+
+        setInterval(function() {
+            const inicio = new Date("2026-05-01T00:00:00");
+            const agora = new Date();
+            let diff = agora - inicio;
+            document.getElementById("anos").innerText = Math.floor(diff / (1000*60*60*24*365));
+            document.getElementById("meses").innerText = Math.floor((diff % (1000*60*60*24*365)) / (1000*60*60*24*30));
+            document.getElementById("dias").innerText = Math.floor((diff % (1000*60*60*24*30)) / (1000*60*60*24));
+            document.getElementById("horas").innerText = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+            document.getElementById("minutos").innerText = Math.floor((diff % (1000*60*60)) / (1000*60));
+            document.getElementById("segundos").innerText = Math.floor((diff % (1000*60)) / 1000);
+        }, 1000);
+
+        function verificarPalavra() {
+            const chute = document.getElementById("input-palavra").value.trim().toUpperCase();
+            const feedback = document.getElementById("feedback");
+            if (chute === "SORRISO") {
+                feedback.innerText = "É assim que amo ver você, sorrindo ❤️";
+                feedback.style.color = "#1DB954";
+            } else {
+                feedback.innerText = "Não é isso... tente de novo!";
+                feedback.style.color = "#ff4d4d";
+            }
+        }
+
+        function girarRoleta() {
+            const opcoes = ["Beijo! 💋", "Abraço apertado! 🤗", "Elogio! ✨", "Massagem! 💆‍♂️", "Vale-café! ☕", "Filme! 🎬", "Carinho eterno! ❤️"];
+            const visor = document.getElementById("visor-roleta");
+            visor.innerText = "Girando...";
+            setTimeout(() => { visor.innerText = opcoes[Math.floor(Math.random() * opcoes.length)]; }, 1000);
+        }
+
         function iniciarSurpresa() {
-            // Esconde a tela de início
-            document.getElementById('tela-inicio').style.display = 'none';
-            // Mostra o conteúdo
-            document.getElementById('conteudo').style.display = 'block';
-            
-            // Tenta reproduzir
-            var audio = document.getElementById('musica');
-            audio.play().then(function() {
-                console.log("Música iniciada!");
-            }).catch(function(error) {
-                console.log("Erro ao tocar:", error);
-            });
+            const telaInicio = document.getElementById('tela-inicio');
+            const conteudo = document.getElementById('conteudo');
+            telaInicio.style.display = 'none';
+            conteudo.style.display = 'block';
+            conteudo.classList.add('aparecer');
+            let audio = document.getElementById('musica');
+            audio.play().catch(e => console.log("Áudio aguardando interação"));
+        }
+
+        function criarEstrelas() {
+            for (let i = 0; i < 40; i++) {
+                let e = document.createElement("div"); e.className = "estrela";
+                e.style.width = e.style.height = (Math.random()*4+2) + "px";
+                e.style.left = (Math.random()*200-100) + "%";
+                e.style.top = (Math.random()*200-100) + "%";
+                e.style.animationDuration = (Math.random()*15+10) + "s";
+                document.body.appendChild(e);
+            }
         }
     </script>
 </body>
